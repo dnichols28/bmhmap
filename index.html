@@ -99,7 +99,9 @@
 
     // Add marker with popup
     var bmhMarker = L.marker([25, 0]).addTo(map);
-    bmhMarker.bindPopup("<b>IMPORTANT BMH INFO!!</b>").openPopup();
+    bmhMarker.bindPopup("<b>IMPORTANT BMH INFO!!</b>")
+    bmhMarker.on('mouseover', function (e) {
+    this.openPopup();;
   </script>
 
 </body>
