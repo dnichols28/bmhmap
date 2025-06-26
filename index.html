@@ -107,6 +107,16 @@
     this.closePopup();
     });
     
+    //Add Ma Chere marker with popup 
+    var machereMarker = L.marker([29.9638897, -90.1092236]).addTo(map);
+    bmhMarker.bindPopup("<b>Home of Ma Chere Lab!</b>")
+    bmhMarker.on('mouseover', function (e) {
+    this.openPopup();
+    });
+    bmhMarker.on('mouseout', function (e) {
+    this.closePopup();
+    });
+    
   </script>
 
 </body>
