@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Continents Map - Leaflet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Simplified GeoJSON of continents (lightweight) -->
+  <script>
+    const continentsGeoJSON = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": { "continent": "Africa" },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [-17.625, 37.21], [51.19, 37.21], [51.19, -35.95],
+              [-17.625, -35.95], [-17.625, 37.21]
+            ]]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": { "continent": "Europe & Asia" },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [-10.0, 70.0], [180.0, 70.0], [180.0, 30.0],
+              [-10.0, 30.0], [-10.0, 70.0]
+            ]]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": { "continent": "North America" },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [-170.0, 83.0], [-50.0, 83.0], [-50.0, 10.0],
+              [-170.0, 10.0], [-170.0, 83.0]
+            ]]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": { "continent": "South America" },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [-82.0, 13.0], [-34.0, 13.0], [-34.0, -56.0],
+              [-82.0, -56.0], [-82.0, 13.0]
+            ]]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": { "continent": "Australia & Oceania" },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [110.0, -10.0], [180.0, -10.0], [180.0, -50.0],
+              [110.0, -50.0], [110.0, -10.0]
+            ]]
+          }
+        }
+      ]
+    };
+  </script>
+
+  <script>
+    // Initialize the map
+    var map = L.map('map', {
+      minZoom: 2,
+      maxZoom: 5,
+      worldCopyJump: true
+    }).setView([20, 0], 2);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add marker with popup
+    var bmhMarker = L.marker([25, 0]).addTo(map);
+    bmhMarker.bindPopup("<b>IMPORTANT BMH INFO!!</b>").openPopup();
+  </script>
+
+</body>
+</html>
